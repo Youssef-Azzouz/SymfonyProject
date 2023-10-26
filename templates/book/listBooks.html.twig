@@ -1,0 +1,49 @@
+<h1>List of Books
+</h1>
+<table border="1">
+	<tr>
+		<td>Ref</td>
+		<td>Title</td>
+		<td>Published</td>
+		<td>PublicationDate</td>
+		<td>Category</td>
+		<td>Author</td>
+		<td>Action</td>
+	</tr>
+	{% set nb_pub = 0 %}
+	{% set nb_non = 0  %}
+	{% for i in tabBooks %}
+		<tr>
+			<td>{{  i.ref}}</td>
+			<td>{{ i.title }}</td>
+			{% if  i.published == true %}
+				<td>Yes</td>
+			{% endif %}
+			{% if  i.published == false %}
+				<td>No</td>
+			{% endif %}
+			<td>{{ i.publicationDate|date }}</td>
+			<td>{{ i.category }}</td>
+			<td>{{ i.author }}</td>
+			<td>
+				<a href="{{ path('editBook', {'id': i.ref}) }}">Edit
+				</a>
+				<a href="{{ path('deleteBook', {'id': i.ref}) }}">
+					Delete
+				</a>
+			</td>
+
+		</tr>
+		{% if  i.published == true %}
+			{% set nb_pub = nb_pub + 1  %}
+
+		{% endif %}
+		{% if  i.published == false %}
+			{% set nb_non = nb_non + 1  %}
+		{% endif %}
+	{% endfor %}
+</table>
+<h3>Nbr Of Books published:
+	{{ nb_pub }}</h3>
+<h3>Nbr Of Books non published:
+	{{ nb_non }}</h3>

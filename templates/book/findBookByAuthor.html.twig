@@ -1,0 +1,27 @@
+<table border="1">
+	<tr>
+		<td>Ref</td>
+		<td>Title</td>
+		<td>Published</td>
+		<td>PublicationDate</td>
+		<td>Category</td>
+		<td>Author</td>
+	</tr>
+	{% for i in tabBooksByAuthor %}
+		<tr>
+			<td>{{  i.ref}}</td>
+			<td>{{ i.title }}</td>
+			{% if  i.published == true %}
+				<td>Yes</td>
+			{% endif %}
+			{% if  i.published == false %}
+				<td>No</td>
+			{% endif %}
+			<td>{{ i.publicationDate|date }}</td>
+			<td>{{ i.category }}</td>
+			<td>{{ i.author }}</td>
+
+		</tr>
+
+	{% endfor %}
+</table>

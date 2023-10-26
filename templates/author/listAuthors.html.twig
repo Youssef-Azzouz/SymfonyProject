@@ -1,0 +1,33 @@
+<table border="1">
+	<tr>
+		<td>Id</td>
+		<td>Username</td>
+		<td>Email</td>
+	</tr>
+	{% for i in tabAuthors %}
+		<tr>
+			<td>{{  i.id}}</td>
+			<td>{{ i.username }}</td>
+			<td>{{ i.email }}</td>
+
+		</tr>
+
+	{% endfor %}
+</table>
+<br>
+<table border="1">
+	<tr>
+		<td>Id</td>
+		<td>Username</td>
+		<td>Email</td>
+	</tr>
+	{% for i in tabSortedAuthors %}
+		<tr>
+			<td>{{  i.id}}</td>
+			<td>{{ i.username }}</td>
+			<td>{{ i.email }}</td>
+
+		</tr>
+
+	{% endfor %}
+</table>

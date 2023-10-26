@@ -1,0 +1,35 @@
+<h1>List Authors</h1>
+{% set x =0 %}
+{% if  tabAuthors is empty %}
+	<h1>Tab vide</h1>
+{% else %}
+	<table border="1">
+		<tr>
+			<td>Id</td>
+			<td>Name</td>
+			<td>Email</td>
+			<td>Books</td>
+			<td>Action</td>
+		</tr>
+		{% for i in tabAuthors %}
+			<tr>
+				<td>{{  i.id}}</td>
+				<td>{{ i.username|upper }}</td>
+				<td>{{ i.email }}</td>
+				<td>
+					{{ i.nb_books }}</td>
+				<td>
+					<a href="{{ path('show_more', {'id': i.id}) }}">Show more +</a>
+				</td>
+
+			</tr>
+			{% set  x= x+ i.nb_books %}
+		{% endfor %}
+	</table>
+{% endif %}
+
+<h3>Nbr Of Authors:
+	{{ tabAuthors|length }}</h3>
+<h3>Nbr Of Books:
+	{{ x }}</h3>
+<img src="{{ asset('img/symfonylive.jpg') }}" alt="symfonylive" height="100px" width="100px">
